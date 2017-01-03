@@ -7,15 +7,21 @@
 				var fieldSelector = "input[name='Focus" + axis.toUpperCase() + "']";
 				return this.closest('.focuspoint-fieldgroup').find(fieldSelector);
 			},
+			getCoord: function(axis) {
+				// International formats may use a comma instead of period
+				var grid = $(this);
+				coord = grid.getCoordField(axis).val();
+				return parseFloat(coord.replace(',','.'));
+			},
 			updateGrid: function() {
 				var grid = $(this);
 
 				// Get coordinates from text fields
-				var focusX = grid.getCoordField('x').val();
-				var focusY = grid.getCoordField('y').val();
+				var focusX = grid.getCoord('x');
+				var focusY = grid.getCoord('y');
 
 				// Calculate background positions
-				var backgroundWH = 605; // Width and height of grid background image
+				var backgroundWH = 605; // Width and height of square grid background image are the same
 				var bgOffset = Math.floor(-backgroundWH/2);
 				var fieldW = grid.width();
 				var fieldH = grid.height();
@@ -38,6 +44,7 @@
 				// console.log('FocusX: '+focusX+' FocusY: '+focusY);
 
 				// Pass coordinates to form fields
+				// ToDo: Do we need to use comma depending on locale?
 				this.getCoordField('x').val(focusX);
 				this.getCoordField('y').val(focusY);
 
