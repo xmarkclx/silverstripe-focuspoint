@@ -1,3 +1,26 @@
+# What's in this fork?
+
+Forked by @xmarkclx to allow Composer support for Silverstripe 3.4.
+
+To use, on composer.json, add:
+
+```
+"repositories": [
+	    {
+	        "type":"package",
+	        "package": {
+	          "name": "jonom/focuspoint",
+	          "version":"master",
+	          "source": {
+	              "url": "https://github.com/xmarkclx/silverstripe-focuspoint.git",
+	              "type": "git",
+	              "reference":"master"
+	            }
+	        }
+	    }
+	],
+```
+
 # FocusPoint: Smarter Image Cropping for SilverStripe
 
 The goal of this module is to introduce some basic art direction to control how images are cropped in SilverStripe.
